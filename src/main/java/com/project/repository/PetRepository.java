@@ -70,42 +70,6 @@ public class PetRepository {
       pets.remove(id);
    }
 
-   /*
-   public List<Pet> getPetsByStatus(String statusValue) {
-      List<Status> statusOptions = List.of(Status.values());
-      statusOptions.stream().filter(option -> Objects.equals(option.toString(), statusValue)).findAny().orElseThrow(() -> new InvalidDataException("Provided status (" + statusValue + ") is invalid"));
-
-      List<Pet> petsWithStatus = findAll().stream().filter(pet -> Objects.equals(pet.getStatus().toString(), statusValue)).collect(Collectors.toList());
-      if(petsWithStatus.isEmpty()) throw new ResourceNotFoundException("No pet with status " + statusValue + " was found!");
-      return petsWithStatus;
-   }
-
-
-   public List<Pet> getPetsByStatus(String[] statusValues) {
-      String statusValuesString = String.join(", ", statusValues);
-      List<String> statusValuesList = Arrays.stream(statusValuesString.split(", ")).toList();
-
-      List<Status> statusOptions = List.of(Status.values());
-      statusOptions.stream().filter(option -> statusValuesList.contains(option.toString())).findAny().orElseThrow(() -> new InvalidDataException("Provided status options (" + statusValuesList + ") is invalid"));
-
-      List<Pet> petsWithStatus = findAll().stream().filter(pet -> statusValuesList.contains(pet.getStatus().toString())).collect(Collectors.toList());
-      if(petsWithStatus.isEmpty()) throw new ResourceNotFoundException("No pet with status options (" + statusValuesList + ") was found!");
-      return petsWithStatus;
-   }
-
-   public List<Pet> getPetsByStatus(String[] statusValues) {
-      List<Pet> petsWithRequiredStatus = new ArrayList<>();
-      for(Pet pet : pets.values()) {
-         for(String status : statusValues) {
-            if(status.equals(pet.getStatus().toString())) {
-               petsWithRequiredStatus.add(pet);
-            }
-         }
-      }
-      return petsWithRequiredStatus;
-   }
-   */
-
    public List<Pet> getPetsByStatus(String statusOptionValues) {
       String[] statusValues = statusOptionValues.split(", ");
       List<Pet> petsWithRequiredStatus = new ArrayList<>();
